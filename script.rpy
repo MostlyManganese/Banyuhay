@@ -1,8 +1,8 @@
 ﻿# The script of the game goes in this file.
 
 
-define a = Character("Mc", color="#4f7eff")
-define b = Character("Wife", color="#4f7eff")
+define a = Character("Juan", color="#4f7eff")
+define b = Character("Maria", color="#4f7eff")
 define c = Character("Doctor", color="#4f7eff")
 define d = Character("Relative", color="#4f7eff")
 define f = Character("idk4", color="#4f7eff")
@@ -10,7 +10,6 @@ define g = Character("", color="#4f7eff", window_background=None)
 # The game starts here.
 
 label start:
-    stop music 
     # Show a background. This uses a placeholder by default, but you can
     # add a file (named either "bg room.png" or "bg room.jpg") to the
     # images directory to show it.
@@ -68,7 +67,17 @@ label start:
 
     b "Ganyan ba kaliit ang tingin mo sakin?" with hpunch
 
-    a "Hindi ito tungkol sa kung kaya mo. Tungkol ito sa kalusugan mo!" with hpunch
+    a "{i}I don't want her to feel like a burden{/i}"
+
+    menu:
+        a "{i}What should I say next?{/i}"
+        "Hindi ito tungkol sa kung kaya mo. Tungkol ito sa kalusugan mo!":
+            jump bruh
+
+        "Nag aalala lang ako sa kalagayan mo, ayokong lumala pa ito...":    
+            jump test
+    
+    label bruh:
 
     a "Kapag pinagpatuloy mo pa, mas lalo pang lalala ang kondisyon mo!" with hpunch
 
@@ -119,97 +128,48 @@ label start:
     a "{i}Paano ko mababayaran ang lahat ng iyon?{/i}" with fade
 
     a "{i}Wala kaming ganoong kalaking pera.{/i}"
+    return
 
-    label hospital2:
-    
-    scene bg hospital
+    label test:
 
-    a "Mahal, mabuti na mas okay na ang iyong kalagayan ngayon."
+    scene bg dining
 
-    b "Ano ang sabi ng doktor?"
-    label black:
+    a "Hindi ko kakayanin kung may mangyari sa'yo.."
 
-    scene bg black
+    a "Ayoko ko pang mawala ka, gusto pa kita makasama habang buhay..."
 
-    "{i}Man explains what the doctor said to him{/i}" with fade
+    "{i}silence{/i}"
 
-    label hospital3:
+    b "Pasensya na..."
 
-    scene bg hospital
+    b "Napapagod na rin kasi ako at nai-stress sa gastos natin."
 
-    b "Ang laki naman ng gastusin para sa operasyon.."
+    b "Ayokong nakikita kang magisa na naghihirap para lang matustus ang ating pamumuhay."
 
-    b "Saan tayo kukuha ng ganoong kalaking pera? Lalo't na hindi ako makakatulong sayo."
+    a "Ako rin. Pero hindi natin kailangang harapin ito nang mag-isa."
 
-    a "Huwag kang mag-alala maha."
+    a "Mag-asawa tayo. Dapat magtulungan tayo."
 
-    a "Gagawin ko ang lahat para makahanap ng paraan"
+    b "Tama ka."
 
-    b "Basta huwag kang gagawa na kung ano mang kalokohan para sa akin."
+    b "Pasensya na sa mga nasabi ko."
 
-    b "Mas gugustuhin ko pang mamatay kaysa mapahamak ka."
+    a "Ako rin. Pasensya na kung napataas ang boses ko."
 
-    a "Hindi ako sasali sa mga masama o delikadong sitwasyon."
 
-    a "Magtiwala ka sakin, hindi ko gagawin ang mga iyon." with fade
+    b "Siguro kailangan ko na talagang bawasan ang trabaho ko."
 
-    label hospital4:
-    
-    scene bg hospital
+    a "At tutulungan kita sa mga gawain dito sa bahay."
 
-    play sound "audio/phone.mp3" loop volume 0.4
-    "{i}You hear the doorbell ring{/i}" with hpunch
+    b "Salamat."
 
-    menu:
-        "Open the door":
-            "{i}You gently open the door{/i}"
-            pass
-    stop sound
+    a "Ang mahalaga sa akin ay ang kalusugan mo."
 
-    d "Kamusta na si *Name drop*?"
+    "{i}Nagngitian silang dalawa.{/i}"
 
-    a "Hindi parin maganda ang kanyang kalagayan niya."
+    scene bg good
 
-    a "Mas lumala ang kanyang kondisyon pagkatapos ng heart attack na natamo niya"
+    "{i}HUG.{/i}" with hpunch
 
-    d "Nabalitaan ko ang nangyari kaya dumiretso na agad ako rito."
 
-    a "Salamat talaga sa pagpunta mo rito, pasensya na rin kung biglaan."
-
-    d "Ano ba ang sabi ng doktor?"
-
-    d "May pagasa naman siyang gumaling diba?"
-
-    a "Oo, pero malaki ang gastusin ang kailangang bayaran."
-
-    d "Pano na yan? May pagkukuhaan ka ba ng pera?"
-
-    a "Hindi ko pa alam pero gagawan ko ng paraan."
-
-    "{i}silence."
-    
-    d "May naitabi akong kaunting pera, kunin mo na."
-
-    d "Para rin ito kay *wife name drop*, wag mo na alalahanin ang pagbalik nito."
-    
-
-    menu:
-        a "{i}Ayokong maging pabigat pero kinakailan ko lahat ng tulong sa ngayon. Ano ang pipiliin ko?{/i}"
-        "Accept":
-            a "Sigurado ka ba diyan?"
-
-            d " Oo naman, para to kay *wife name drop*."
-
-            d "Huwag mong kalimutan na may taong handang tumulong para sayo."
-
-            a "Maraming salamat talaga *relative name drop*!"
-
-            a "Gagawa ako ng paraan para makabawi sayo"
-
-            d "Wala lang yan *man name drop"
-
-            d "Huwag kang mawalan ng pag asa" with fade
-
-        "Reject":
-            pass
-return
+    return
